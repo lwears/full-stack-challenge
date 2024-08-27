@@ -1,0 +1,47 @@
+{
+  "name": "full-stack-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn build:frontend && yarn build:functions",
+    "build:frontend": "yarn workspace frontend run build",
+    "build:functions": "yarn workspace functions run build",
+    "serve": "yarn build && firebase emulators:start",
+    "deploy:frontend": "yarn build:frontend && firebase deploy --only hosting",
+    "deploy:functions": "firebase deploy --only functions",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "**/*.{jsx,js,tsx,ts}": "eslint --cache --fix"
+  },
+  "repository": "git@github.com:lwears/full-stack-challenge.git",
+  "author": "Liam Wears <liamwears@fastmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/compat": "^1.1.1",
+    "@eslint/js": "^9.9.1",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-tailwindcss": "^3.17.4",
+    "eslint-plugin-unicorn": "^55.0.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.3.0"
+  },
+  "dependencies": {
+    "prettier": "^3.3.3"
+  }
+}
