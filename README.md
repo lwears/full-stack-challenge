@@ -11,20 +11,13 @@ The project is built using Vite & React and Tailwind CSS & DaisyUI.
 
 Using the app is straightforward. Follow these steps to authenticate using your phone number:
 
-1. **Enter Phone Number:**
+1. Input your phone number in international format, for example: `+460740741234`.
 
-   - Input your phone number in international format, for example: `+460740741234`.
+2. Click the **"Send Code"** button. This will trigger a verification code to be sent to your phone.
 
-2. **Send Code:**
+3. Once you receive the code, enter it into the verification code field.
 
-   - Click the **"Send Code"** button. This will trigger a verification code to be sent to your phone.
-
-3. **Enter Verification Code:**
-
-   - Once you receive the code, enter it into the verification code field.
-
-4. **Verify Code:**
-   - Click the **"Verify Code"** button to complete the verification process.
+4. Click the **"Verify Code"** button to complete the verification process.
 
 After successfully verifying the code, you will be redirected to the profile page.
 
@@ -49,6 +42,7 @@ Browse to <http://localhost:5000>
 
 - Implement Testing
 - Setup AppCheck
+- There is a bug when hitting enter on verification code on login page. It essentially executes the first button initiating another request for verification code.
 
 ## 📦 Dependencies
 
