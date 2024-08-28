@@ -7,7 +7,8 @@ import { Toaster } from 'sonner'
 import { Login } from './pages/Login'
 import { Profile } from './pages/Profile'
 import { ProtectedRoute } from './ProtectedRoute'
-import { Main } from './layouts/Main'
+import { Layout } from './layouts/Layout'
+import PublicRoute from './PublicRoute'
 
 function App() {
   const app = useFirebaseApp()
@@ -23,9 +24,23 @@ function App() {
     <FunctionsProvider sdk={functions}>
       <AuthProvider sdk={auth}>
         <Routes>
-          <Route element={<Main />}>
-            <Route index element={<Login />} />
-            <Route path="login" element={<Login />} />
+          <Route element={<Layout />}>
+            <Route
+              index
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
             <Route
               path="profile"
               element={
