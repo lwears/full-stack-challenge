@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-        working-directory: ./functions
+        working-directory: ./apps/functions
 
       - name: Deploy to Firebase
         env:
