@@ -86,5 +86,7 @@ Thank you for taking the time to review this project. I’d like to provide some
 
 4. **Project Enjoyment:**  
    Overall, this project was a lot of fun. Even though there were some bumps along the way, diving into Firebase was a great learning experience. I picked Firebase Hosting, Functions, and Firestore because they all work well together and I thought it would make things easier to connect everything smoothly. I choose the frontend frameworks (React, RHF, Zod etc) simply because I have the most experience with them.
+5. **Firebase Deployment**:
+   The app is deployed to the us-central1 region. Initially, I considered changing it to a European location, but found that once a Firebase project is created, its region cannot be changed. Additionally, Firebase Auth can only have its region set to us-central1. This was a limitation I encountered during the setup.
 
 Thank you for your understanding and for reviewing my work. If you have any questions or need further clarifications, please feel free to ask.

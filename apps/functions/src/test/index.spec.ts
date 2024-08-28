@@ -23,7 +23,6 @@ describe('Unit tests', () => {
   it('test getUserProfile', async () => {
     const wrapped = wrap(getUserProfile)
 
-    // Make a fake document snapshot to pass to the function
     const after = firestore.makeDocumentSnapshot(
       {
         name: 'Liam',
