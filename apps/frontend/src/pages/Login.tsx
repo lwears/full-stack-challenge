@@ -1,31 +1,16 @@
 import React, { useState } from 'react'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
-import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useAuth } from 'reactfire'
 import { toast } from 'sonner'
-import { z } from 'zod'
+import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
 
 import { Button, Input } from '../components'
-import { zPhoneNumber } from '../utils'
+import { codeSchema, phoneSchema } from '../schemas'
 
 import type { ConfirmationResult } from 'firebase/auth'
-
-const phoneSchema = z.object({
-  phoneNumber: zPhoneNumber,
-})
-
-const codeSchema = z.object({
-  code: z
-    .string()
-    .min(1, 'String cannot be empty')
-    .max(6, 'Number string cannot exceed 6 digits')
-    .regex(/^\d+$/, 'Must contain only digits'),
-})
-
-type PhoneFormData = z.infer<typeof phoneSchema>
-type CodeFormData = z.infer<typeof codeSchema>
+import type { CodeFormData, PhoneFormData } from '../schemas'
 
 export const Login: React.FC = () => {
   const [confirmationResult, setConfirmationResult] =

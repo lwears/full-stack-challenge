@@ -23,6 +23,7 @@ Browse to <http://localhost:5000>
 ## 🚧 Future Improvements
 
 - Implement Testing
+- validate inputs server side
 
 ## Dependencies
 

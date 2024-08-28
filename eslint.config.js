@@ -1,4 +1,3 @@
-import { FlatCompat } from '@eslint/eslintrc'
 import pluginJs from '@eslint/js'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -6,8 +5,11 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tailwind from 'eslint-plugin-tailwindcss'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import globals from 'globals'
-import tseslint from 'typescript-eslint'
 import tsParser from '@typescript-eslint/parser'
+import importPlugin from 'eslint-plugin-import'
+import importRecommended from 'eslint-plugin-import/config/recommended.js'
+import tseslint from 'typescript-eslint'
+import { fixupPluginRules } from '@eslint/compat'
 
 export default [
   pluginJs.configs.recommended,
@@ -17,11 +19,30 @@ export default [
   ...tailwind.configs['flat/recommended'],
   {
     languageOptions: {
-      parser: tsParser,
-      globals: {
-        ...globals.node,
+      parserOptions: {
+        parser: tsParser,
+        ecmaVersion: 2022,
+        sourceType: 'module',
       },
     },
+    plugins: {
+      import: fixupPluginRules(importPlugin),
+    },
+    settings: {
+      'import/parsers': {
+        espree: ['.js', '.cjs', '.mjs', 'ts'],
+        '@typescript-eslint/parser': ['.ts'],
+      },
+      'import/resolver': {
+        node: true,
+        typescript: true,
+      },
+    },
+    rules: {
+      ...importRecommended.rules,
+      'import/no-named-as-default-member': 'off',
+    },
+    files: ['apps/functions/*.{ts,tsx,js,jsx}'],
   },
   {
     ignores: ['**/dist', '**/postcss.config.js', '**/vite-env.d.ts'],
@@ -30,7 +51,7 @@ export default [
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
   },
   {
-    files: ['apps/frontend/*.{ts,tsx}'],
+    files: ['apps/frontend/*.{ts,tsx,js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
