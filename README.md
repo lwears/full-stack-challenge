@@ -3,13 +3,17 @@
 This is a code test application built for NC to demonstrate my development skillset, specifically: firebase and frontend
 The project is built using Vite & React and Tailwind CSS & DaisyUI.
 
+## 🌐 Deployed app
+
+<https://lwears-21-08.web.app>
+
 ## 🚀 Getting Started
 
-### Prerequisites
+### 📋 Prerequisites
 
 - [Node.js (v16.x or higher) and Yarn](https://nodejs.org/en/download/) (for the frontend)
 
-### Run All Firebase emulators
+### ▶️ Run All Firebase emulators
 
 From the root level run:
 
@@ -23,11 +27,11 @@ Browse to <http://localhost:5000>
 ## 🚧 Future Improvements
 
 - Implement Testing
-- validate inputs server side
+- Setup AppCheck
 
-## Dependencies
+## 📦 Dependencies
 
-### Frontend
+### 🖥️ Frontend
 
 - [Tailwind CSS](https://tailwindcss.com/)(CSS utility classes)
 - [Daisyui](https://daisyui.com/)(Component class names for Tailwind CSS)
