@@ -1,6 +1,7 @@
 import * as admin from 'firebase-admin'
 import * as functions from 'firebase-functions'
-
+//import { profileSchema } from '@shared/schemas'
+import { profileSchema } from '../../../packages/shared/schemas'
 admin.initializeApp()
 
 export const createUserProfile = functions.auth
@@ -28,17 +29,23 @@ export const updateUserProfile = functions.https.onCall(
     // I can assert not undefined because we know that is the only login method
     const phoneNumber = context.auth.token.phone_number!
 
+    const parsedData = profileSchema.safeParse(data)
+
+    if (!parsedData.success) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'Invalid input data',
+        parsedData.error.format(),
+      )
+    }
+
     const { name, email } = data
 
     try {
-      await admin
-        .firestore()
-        .collection('users')
-        .doc(phoneNumber)
-        .update({
-          name: name || null,
-          email: email || null,
-        })
+      await admin.firestore().collection('users').doc(phoneNumber).update({
+        name: name,
+        email: email,
+      })
 
       return { message: 'User profile updated successfully.' }
     } catch (error) {

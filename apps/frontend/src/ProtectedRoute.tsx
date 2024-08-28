@@ -1,6 +1,9 @@
-import type { ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useSigninCheck } from 'reactfire'
+
+import { Loading } from './components'
+
+import type { ReactNode } from 'react'
 
 interface Props {
   redirectPath?: string
@@ -14,7 +17,7 @@ export const ProtectedRoute = ({
   const { status, data: signInCheckResult } = useSigninCheck()
 
   if (status === 'loading') {
-    return <span>loading...</span>
+    return <Loading />
   }
 
   if (!signInCheckResult.signedIn) {

@@ -9,8 +9,8 @@ import { useAuth, useCallableFunctionResponse, useFunctions } from 'reactfire'
 import { toast } from 'sonner'
 
 import { Button, Input, Loading } from '../components'
-import type { ProfileFormData } from '../schemas'
-import { profileSchema } from '../schemas'
+import { profileSchema } from '@shared/schemas'
+import type { Profile as ProfileFormData } from '@shared/schemas'
 
 interface UpdateProfileResponse {
   message: string
