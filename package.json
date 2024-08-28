@@ -5,13 +5,16 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "build": "yarn build:frontend && yarn build:functions",
+    "build:dev": "yarn build:frontend:dev && yarn build:functions",
     "build:frontend": "yarn workspace frontend run build",
+    "build:frontend:dev": "yarn workspace frontend run build:dev",
     "build:functions": "yarn workspace functions run build",
-    "serve": "yarn build && firebase emulators:start",
+    "serve": "yarn build:dev && firebase emulators:start",
     "deploy:frontend": "yarn build:frontend && firebase deploy --only hosting",
     "deploy:functions": "firebase deploy --only functions",
     "prepare": "husky"
@@ -37,9 +40,11 @@
     "globals": "^15.9.0",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.9",
+    "prettier": "^3.3.3",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.3.0",
-    "prettier": "^3.3.3"
+    "typescript-eslint": "^8.3.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
 }
