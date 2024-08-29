@@ -45,7 +45,12 @@ export default [
     files: ['apps/functions/*.{ts,tsx,js,jsx}'],
   },
   {
-    ignores: ['**/dist', '**/postcss.config.js', '**/vite-env.d.ts'],
+    ignores: [
+      '**/dist',
+      '**/postcss.config.js',
+      '**/vite-env.d.ts',
+      'jest.config.js',
+    ],
   },
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
@@ -62,6 +67,12 @@ export default [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      'tailwindcss/no-custom-classname': [
+        'warn',
+        {
+          config: 'apps/frontend/tailwind.config.js',
+        },
+      ],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
