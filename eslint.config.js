@@ -47,9 +47,9 @@ export default [
   {
     ignores: [
       '**/dist',
-      '**/postcss.config.js',
+      '**/postcss.config.cjs',
       '**/vite-env.d.ts',
-      'jest.config.js',
+      '**/jest.config.js',
     ],
   },
   {
