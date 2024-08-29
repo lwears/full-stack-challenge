@@ -1,8 +1,9 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} **/
-export default {
+// eslint-disable-next-line unicorn/prefer-module
+module.exports = {
   globals: {
     'ts-jest': {
-      tsconfig: './tsconfig.json', // Ensure this path points to your correct tsconfig
+      tsconfig: './tsconfig.json',
     },
   },
   preset: 'ts-jest',

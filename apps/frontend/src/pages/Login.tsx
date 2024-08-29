@@ -45,10 +45,10 @@ export const Login: React.FC = () => {
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((result) => {
         setConfirmationResult(result)
-        console.log('Verification code sent!')
+        toast.success('Verification code sent!')
       })
       .catch((error) => {
-        console.error('Error sending verification code:', error)
+        toast.error('Error sending verification code:', { description: error })
       })
   }
 
