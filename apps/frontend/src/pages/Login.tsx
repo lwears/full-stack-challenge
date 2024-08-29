@@ -69,35 +69,47 @@ export const Login: React.FC = () => {
   return (
     <>
       <h2 className="text-naturalcycles-900 text-2xl font-bold">Login</h2>
-      <form className="flex w-[300px] flex-col items-center justify-center gap-2">
-        <Input<PhoneFormData>
-          type="tel"
-          register={registerPhoneInput}
-          placeholder="Enter phone number"
-          error={phoneErrors.phoneNumber}
-          title="Phone Number"
-          name="phoneNumber"
-        />
+      <div className="flex w-4/5 max-w-xs flex-col items-center justify-center gap-2 md:w-[300px]">
+        <form className="w-full">
+          <Input<PhoneFormData>
+            type="tel"
+            register={registerPhoneInput}
+            placeholder="Enter phone number"
+            error={phoneErrors.phoneNumber}
+            title="Phone Number"
+            name="phoneNumber"
+          />
 
-        <Button
-          content="Send Code"
-          onClick={handleSubmitPhoneNumber(sendVerificationCode)}
-        />
-        <Input<CodeFormData>
-          type="text"
-          register={registerCodeInput}
-          placeholder="Enter verification code"
-          error={codeErrors.code}
-          title="Verification Code"
-          name="code"
-        />
-        <Button
-          content="Verify Code"
-          onClick={handleSubmitCode(verifyCode)}
-          disabled={!isSubmitted}
-        />
-        <div id="recaptcha-container"></div>
-      </form>
+          <Button
+            type="submit"
+            content="Send Code"
+            onClick={handleSubmitPhoneNumber(sendVerificationCode)}
+          />
+        </form>
+        <form className="w-full">
+          <Input<CodeFormData>
+            type="text"
+            register={registerCodeInput}
+            placeholder="Enter verification code"
+            error={codeErrors.code}
+            title="Verification Code"
+            name="code"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                handleSubmitCode(verifyCode)()
+              }
+            }}
+          />
+          <Button
+            type="submit"
+            content="Verify Code"
+            onClick={handleSubmitCode(verifyCode)}
+            disabled={!isSubmitted}
+          />
+          <div id="recaptcha-container"></div>
+        </form>
+      </div>
     </>
   )
 }

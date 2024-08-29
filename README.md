@@ -42,7 +42,6 @@ Browse to <http://localhost:5000>
 
 - Implement Testing
 - Setup AppCheck
-- There is a bug when hitting enter on verification code on login page. It essentially executes the first button initiating another request for verification code.
 
 ## 📦 Dependencies
 
