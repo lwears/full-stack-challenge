@@ -6,7 +6,6 @@ export const profileSchema = z.object({
       required_error: 'name is required',
       invalid_type_error: 'name must be a string',
     })
-    .toLowerCase()
     .trim()
     .min(1, { message: 'name must be minimum 1 character' })
     .max(45)

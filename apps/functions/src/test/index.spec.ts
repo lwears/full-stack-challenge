@@ -3,6 +3,7 @@ import { createUserProfile, getUserProfile } from '../index'
 import * as admin from 'firebase-admin'
 import firebaseFunctionsTest from 'firebase-functions-test'
 
+// github.com/firebase/quickstart-testing/blob/master/unit-test-cloud-functions/functions/test/functions.spec.js
 // Initialize the firebase-functions-test SDK using environment variables.
 // These variables are automatically set by firebase emulators:exec
 //
