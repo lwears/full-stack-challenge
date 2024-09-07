@@ -9,9 +9,9 @@ export const phoneSchema = z.object({
 export const codeSchema = z.object({
   code: z
     .string()
-    .min(1, 'String cannot be empty')
-    .max(6, 'Number string cannot exceed 6 digits')
-    .regex(/^\d+$/, 'Must contain only digits'),
+    .min(1, 'Code cannot be empty')
+    .max(6, 'Code cannot exceed 6 digits')
+    .regex(/^\d+$/, 'Code must contain only digits'),
 })
 
 export type PhoneFormData = z.infer<typeof phoneSchema>

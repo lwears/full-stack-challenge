@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,6 +10,7 @@ import { toast } from 'sonner'
 
 import { Button, Input, Loading } from '../components'
 import { profileSchema } from '@shared/schemas'
+
 import type { Profile as ProfileFormData } from '@shared/schemas'
 
 interface UpdateProfileResponse {
@@ -21,10 +22,10 @@ export const Profile: React.FC = () => {
   const navigate = useNavigate()
   const functions = useFunctions()
 
-  const logout = () => {
+  const logout = useCallback(() => {
     signOut(auth)
     navigate('/')
-  }
+  }, [auth, navigate])
 
   const {
     register,

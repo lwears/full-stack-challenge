@@ -10,7 +10,7 @@ export const profileSchema = z.object({
     .min(1, { message: 'name must be minimum 1 character' })
     .max(45)
     .refine((value) => Number.isNaN(Number(value)), {
-      message: 'value should not be a number',
+      message: 'name should not be a number',
     }),
   email: z.string().email(),
 })
