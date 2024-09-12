@@ -22,12 +22,12 @@ jobs:
           node-version: '18' # Match this version to the version in functions/package.json
           cache: 'yarn'
 
-      - name: Install Firebase CLI
-        run: yarn global add firebase-tools
-
       - name: Install dependencies
         run: yarn
         working-directory: ./apps/functions
+
+      - name: Install Firebase CLI
+        run: yarn global add firebase-tools
 
       - name: Deploy to Firebase
         env:
