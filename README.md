@@ -42,6 +42,7 @@ Browse to <http://localhost:5000>
 
 - Implement Testing
 - Setup AppCheck
+- Logout as Route
 
 ## 📦 Dependencies
 
