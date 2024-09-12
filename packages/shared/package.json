@@ -1,6 +1,5 @@
 {
   "name": "@full-stack-challenge/shared",
   "version": "1.0.0",
-  "main": "index.ts",
-  "dependencies": {}
+  "main": "index.ts"
 }
