@@ -1,9 +1,9 @@
-import * as admin from 'firebase-admin'
-import * as functions from 'firebase-functions'
-import * as v1 from 'firebase-functions/v1'
+import admin from 'firebase-admin'
+import functions from 'firebase-functions'
+import v1 from 'firebase-functions/v1'
 
-//import { profileSchema } from '@shared/schemas'
-import { profileSchema } from '../../../packages/shared/schemas'
+import { profileSchema } from '@shared/schemas'
+// import { profileSchema } from '../../../packages/shared/schemas'
 
 admin.initializeApp()
 
@@ -58,7 +58,7 @@ export const updateUserProfile = functions.https.onCall(
       )
     }
 
-    const { name, email } = parsedData.data
+    const { name, email } = request.data
 
     try {
       await admin.firestore().collection('users').doc(phoneNumber!).update({

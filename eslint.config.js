@@ -10,7 +10,9 @@ import importPlugin from 'eslint-plugin-import'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['**/*.config.*'] },
+  {
+    ignores: ['**/*.config.*', '**/dist', '**/node_modules', '**/public'],
+  },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,

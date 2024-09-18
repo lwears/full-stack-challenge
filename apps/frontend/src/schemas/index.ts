@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { zPhoneNumber } from '../utils'
 
 export const phoneSchema = z.object({
-  countryCode: z.string(),
+  //countryCode: z.string(),
   phoneNumber: zPhoneNumber,
 })
 
