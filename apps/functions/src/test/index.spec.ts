@@ -1,7 +1,9 @@
-import { expect, test } from '@jest/globals'
+import { expect, test, describe, afterAll, it } from '@jest/globals'
 import { createUserProfile, getUserProfile } from '../index'
 import * as admin from 'firebase-admin'
 import firebaseFunctionsTest from 'firebase-functions-test'
+
+import type { UserRecord } from 'firebase-admin/auth'
 
 // github.com/firebase/quickstart-testing/blob/master/unit-test-cloud-functions/functions/test/functions.spec.js
 // Initialize the firebase-functions-test SDK using environment variables.
@@ -30,7 +32,10 @@ describe('Unit tests', () => {
         email: 'liam@wears.com',
       },
       '/users/123456789',
-    )
+    ) as admin.firestore.DocumentSnapshot<{
+      name: string
+      email: string
+    }>
 
     await wrapped(after, {
       auth: { uid: '123', token: { phone_number: '123456789' } },
@@ -48,7 +53,7 @@ describe('Unit tests', () => {
     const wrapped = wrap(createUserProfile)
 
     const phoneNumber = '+46730741743'
-    const user = auth.makeUserRecord({ uid: phoneNumber })
+    const user = auth.makeUserRecord({ uid: phoneNumber }) as UserRecord
 
     await wrapped(user)
 

@@ -58,7 +58,7 @@ export const updateUserProfile = functions.https.onCall(
       )
     }
 
-    const { name, email } = request.data
+    const { name, email } = parsedData.data
 
     try {
       await admin.firestore().collection('users').doc(phoneNumber!).update({
