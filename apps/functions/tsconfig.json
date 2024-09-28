@@ -20,15 +20,9 @@
       "node"
     ],
     "allowSyntheticDefaultImports": true,
-    /* If your code doesn't run in the DOM: */
     "lib": [
       "es2022"
     ],
-    // "paths": {
-    //   "@shared/*": [
-    //     "../../packages/shared/*"
-    //   ]
-    // }
     "customConditions": [
       "@custom/validators"
     ],
