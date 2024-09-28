@@ -70,6 +70,14 @@ export default tseslint.config(
         },
       ],
       '@typescript-eslint/no-namespace': 'off',
+      '@typescript-eslint/no-misused-promises': [
+        'error',
+        {
+          checksVoidReturn: {
+            attributes: false,
+          },
+        },
+      ],
       'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
       'unicorn/filename-case': 'off',
       'unicorn/prevent-abbreviations': 'off',

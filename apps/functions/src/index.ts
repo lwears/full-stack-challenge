@@ -2,8 +2,7 @@ import admin from 'firebase-admin'
 import functions from 'firebase-functions'
 import v1 from 'firebase-functions/v1'
 
-import { profileSchema } from '@shared/schemas'
-// import { profileSchema } from '../../../packages/shared/schemas'
+import { profileSchema } from 'validators'
 
 admin.initializeApp()
 

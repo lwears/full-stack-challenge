@@ -5,6 +5,22 @@
     "hoistingLimits": "workspaces"
   },
   "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "@liam/source": "./index.ts",
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "@custom/validators": "./index.ts",
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "lint": "eslint .",
     "build": "tsc",
@@ -19,10 +35,10 @@
   "engines": {
     "node": "20"
   },
-  "main": "dist/index.js",
   "dependencies": {
     "firebase-admin": "^12.5.0",
     "firebase-functions": "^6.0.1",
+    "validators": "workspace:^",
     "zod": "^3.23.8"
   },
   "devDependencies": {

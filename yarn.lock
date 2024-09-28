@@ -1566,12 +1566,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@full-stack-challenge/shared@workspace:packages/shared":
-  version: 0.0.0-use.local
-  resolution: "@full-stack-challenge/shared@workspace:packages/shared"
-  languageName: unknown
-  linkType: soft
-
 "@google-cloud/firestore@npm:^7.7.0":
   version: 7.10.0
   resolution: "@google-cloud/firestore@npm:7.10.0"
@@ -5410,6 +5404,7 @@ __metadata:
     firebase-functions-test: "npm:^3.3.0"
     jest: "npm:^29.7.0"
     ts-jest: "npm:^29.2.5"
+    validators: "workspace:^"
     zod: "npm:^3.23.8"
   languageName: unknown
   linkType: soft
@@ -10036,6 +10031,12 @@ __metadata:
   checksum: 10c0/7b91e455a8de9a0beaa9fe961e536b677da7f48c9a493edf4d4d4a87fd80a7a10267d438723364e432c2fcd00b5650b5378275cded362383ef570276e6312f4f
   languageName: node
   linkType: hard
+
+"validators@workspace:^, validators@workspace:packages/validators":
+  version: 0.0.0-use.local
+  resolution: "validators@workspace:packages/validators"
+  languageName: unknown
+  linkType: soft
 
 "vary@npm:^1, vary@npm:~1.1.2":
   version: 1.1.2
