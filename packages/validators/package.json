@@ -7,12 +7,12 @@
   "exports": {
     ".": {
       "import": {
-        "@custom/validators": "./index.ts",
+        "@custom/validators": "./lib/index.js",
         "default": "./lib/index.js",
         "types": "./lib/index.d.ts"
       },
       "require": {
-        "@custom/validators": "./index.ts",
+        "@custom/validators": "./lib/index.js",
         "types": "./lib/index.d.ts",
         "default": "./lib/index.js"
       }

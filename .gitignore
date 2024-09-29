@@ -69,6 +69,7 @@ node_modules/
 .dataconnect
 
 dist
+lib
 dist-ssr
 *.local
 
