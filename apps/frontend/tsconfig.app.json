@@ -21,14 +21,18 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@shared/*": [
-        "../../packages/shared/*"
-      ]
-    }
+    "composite": true,
+    "customConditions": [
+      "@custom/validators"
+    ],
   },
   "include": [
     "src",
     "postcss.config.cjs"
+  ],
+  "references": [
+    {
+      "path": "../../packages/validators"
+    },
   ]
 }

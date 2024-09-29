@@ -6,13 +6,14 @@ require('esbuild')
     outfile: 'dist/index.js',
     bundle: true,
     platform: 'node',
-    target: 'node16', // Target a compatible Node.js version
-    format: 'esm', // Use CommonJS as the output format
+    target: 'node16',
+    format: 'esm',
     // Optional and for development only. This provides the ability to
     // map the built code back to the original source format when debugging.
     //sourcemap: 'inline',
     external: ['./node_modules/*'],
     logLevel: 'info',
     tsconfig: './tsconfig.json',
+    //conditions: ['@custom/validators'],
   })
   .catch(() => process.exit(1))

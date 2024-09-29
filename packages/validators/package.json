@@ -1,8 +1,9 @@
 {
   "name": "validators",
   "version": "1.0.0",
+  "type": "module",
   "main": "./lib/index.js",
-  "types": "index.d.ts",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": {
@@ -12,9 +13,13 @@
       },
       "require": {
         "@custom/validators": "./index.ts",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
       }
     }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf lib node_modules"
   }
 }

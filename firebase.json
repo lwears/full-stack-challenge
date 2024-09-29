@@ -16,7 +16,7 @@
       ],
       "predeploy": [
         "npm --prefix \"$RESOURCE_DIR\" run lint",
-        "npm --prefix \"$RESOURCE_DIR\" run build2"
+        "npm --prefix \"$RESOURCE_DIR\" run build"
       ]
     }
   ],

@@ -1,6 +1,11 @@
 {
     "compilerOptions": {
         /* Base Options: */
+        "outDir": "${configDir}/lib",
+        "composite": true,
+        "incremental": true,
+        "declaration": true,
+        "declarationMap": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
         "target": "es2022",
@@ -14,8 +19,8 @@
         /* If NOT transpiling with TypeScript: */
         "moduleResolution": "Bundler",
         "module": "ESNext",
-        "noEmit": true,
-        "composite": false,
+        "noEmit": false,
+        "emitDeclarationOnly": false,
         /* If your code doesn't run in the DOM: */
         "lib": [
             "es2022"
@@ -23,6 +28,8 @@
         "customConditions": [
             "@custom/validators"
         ],
-        "outDir": "${configDir}/lib",
-    }
+    },
+    "exclude": [
+        "${configDir}/lib"
+    ]
 }

@@ -9,7 +9,7 @@
   "exports": {
     ".": {
       "import": {
-        "@liam/source": "./index.ts",
+        "@custom/validators": "./index.ts",
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       },
@@ -23,10 +23,9 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "build": "tsc",
-    "build2": "node ./esbuild.config.cjs",
-    "build:watch": "tsc --watch",
-    "serve": "yarn build2 && firebase emulators:start --only functions",
+    "build": "tsc && node ./esbuild.config.cjs",
+    "build:watch": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node --target=node16 --format=esm --external:./node_modules/* --log-level=info --tsconfig=./tsconfig.json --watch",
+    "serve": "yarn build && firebase emulators:start --only functions",
     "shell": "yarn build && firebase functions:shell",
     "start": "yarn run shell",
     "deploy": "firebase deploy --only functions",
