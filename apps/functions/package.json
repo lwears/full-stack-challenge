@@ -9,12 +9,12 @@
   "exports": {
     ".": {
       "import": {
-        "@custom/validators": "./lib/index.js",
+        "@custom/validators": "./dist/index.js",
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       },
       "require": {
-        "@custom/validators": "./lib/index.js",
+        "@custom/validators": "./dist/index.js",
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       }

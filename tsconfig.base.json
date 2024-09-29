@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         /* Base Options: */
-        "outDir": "${configDir}/lib",
+        "outDir": "${configDir}/dist",
         "composite": true,
         "incremental": true,
         "declaration": true,
@@ -30,6 +30,6 @@
         ],
     },
     "exclude": [
-        "${configDir}/lib"
+        "${configDir}/dist"
     ]
 }
