@@ -4,21 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "main": "dist/index.js",
-  "exports": {
-    ".": {
-      "import": {
-        "@custom/validators": "./index.ts",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "@custom/validators": "./index.ts",
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    },
-    "./package.json": "./package.json"
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -38,7 +23,6 @@
     "reactfire": "^4.2.3",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
-    "validators": "workspace:^",
     "zod": "^3.23.8"
   },
   "devDependencies": {

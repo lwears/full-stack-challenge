@@ -5318,7 +5318,6 @@ __metadata:
     sonner: "npm:^1.5.0"
     tailwind-merge: "npm:^2.5.2"
     tailwindcss: "npm:^3.4.13"
-    validators: "workspace:^"
     vite: "npm:^5.4.8"
     zod: "npm:^3.23.8"
   languageName: unknown
@@ -10066,7 +10065,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"validators@workspace:^, validators@workspace:packages/validators":
+"validators@workspace:packages/validators":
   version: 0.0.0-use.local
   resolution: "validators@workspace:packages/validators"
   languageName: unknown

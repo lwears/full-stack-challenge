@@ -9,9 +9,9 @@ import { useAuth, useCallableFunctionResponse, useFunctions } from 'reactfire'
 import { toast } from 'sonner'
 
 import { Button, Input, Loading } from '../components'
-import { profileSchema } from '@shared/schemas'
+import { profileSchema } from 'validators'
 
-import type { Profile as ProfileFormData } from '@shared/schemas'
+import type { Profile as ProfileFormData } from 'validators'
 
 interface UpdateProfileResponse {
   message: string
@@ -22,8 +22,8 @@ export const Profile: React.FC = () => {
   const navigate = useNavigate()
   const functions = useFunctions()
 
-  const logout = useCallback(() => {
-    signOut(auth)
+  const logout = useCallback(async () => {
+    await signOut(auth)
     navigate('/')
   }, [auth, navigate])
 
