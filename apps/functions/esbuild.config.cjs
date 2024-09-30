@@ -14,6 +14,5 @@ require('esbuild')
     external: ['./node_modules/*'],
     logLevel: 'info',
     tsconfig: './tsconfig.json',
-    conditions: ['@custom/validators'],
   })
   .catch(() => process.exit(1))
