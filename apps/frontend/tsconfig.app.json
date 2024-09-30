@@ -18,6 +18,7 @@
   },
   "include": [
     "src",
-    "postcss.config.cjs"
+    "postcss.config.cjs",
+    "src/global.d.ts"
   ],
 }
