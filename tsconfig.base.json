@@ -1,11 +1,5 @@
 {
     "compilerOptions": {
-        /* Base Options: */
-        "outDir": "${configDir}/dist",
-        "composite": true,
-        "incremental": true,
-        "declaration": true,
-        "declarationMap": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
         "target": "es2022",
@@ -13,23 +7,26 @@
         "allowJs": true,
         "resolveJsonModule": true,
         "moduleDetection": "force",
-        /* Strictness */
         "strict": true,
         "noUncheckedIndexedAccess": true,
-        /* If NOT transpiling with TypeScript: */
         "moduleResolution": "Bundler",
         "module": "ESNext",
-        "noEmit": false,
-        "emitDeclarationOnly": false,
-        /* If your code doesn't run in the DOM: */
         "lib": [
             "es2022"
         ],
-        "customConditions": [
-            "@custom/validators"
-        ],
+        "paths": {
+            "validators": [
+                "../../packages/validators"
+            ]
+        }
     },
+    "references": [
+        {
+            "path": "../../packages/validators"
+        }
+    ],
     "exclude": [
-        "${configDir}/dist"
+        "**/dist",
+        "**/node_modules"
     ]
 }
