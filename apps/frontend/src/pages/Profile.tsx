@@ -11,6 +11,7 @@ import { toast } from 'sonner'
 import { Button, Input, Loading } from '../components'
 import { profileSchema } from 'validators'
 
+import type { SubmitHandler } from 'react-hook-form'
 import type { Profile as ProfileFormData } from 'validators'
 
 interface UpdateProfileResponse {
@@ -40,31 +41,36 @@ export const Profile: React.FC = () => {
   const { status, data } = useCallableFunctionResponse<
     ProfileFormData,
     ProfileFormData
-  >('getUserProfile')
+  >('getUserProfile', { suspense: true })
 
   useEffect(() => {
-    reset(data)
-  }, [data])
+    if (status === 'success') {
+      reset(data)
+    }
+  }, [data, reset])
+
+  const updateUserProfile: SubmitHandler<ProfileFormData> = useCallback(
+    async (data: ProfileFormData) => {
+      try {
+        const updateProfile = httpsCallable<
+          ProfileFormData,
+          UpdateProfileResponse
+        >(functions, 'updateUserProfile')
+        const result = await updateProfile(data)
+        toast.success(result.data.message)
+      } catch (error) {
+        if (error instanceof FirebaseError) {
+          toast.error(error.message)
+        } else {
+          toast.error('An unknown error occurred')
+        }
+      }
+    },
+    [],
+  )
 
   if (status === 'loading') {
     return <Loading />
-  }
-
-  const updateUserProfile = async (data: ProfileFormData) => {
-    try {
-      const updateProfile = httpsCallable<
-        ProfileFormData,
-        UpdateProfileResponse
-      >(functions, 'updateUserProfile')
-      const result = await updateProfile(data)
-      toast.success(result.data.message)
-    } catch (error) {
-      if (error instanceof FirebaseError) {
-        toast.error(error.message)
-      } else {
-        toast.error('An unknown error occurred')
-      }
-    }
   }
 
   return (

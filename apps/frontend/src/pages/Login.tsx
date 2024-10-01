@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from 'reactfire'
 import { toast } from 'sonner'
@@ -11,6 +11,7 @@ import { codeSchema, phoneSchema } from '../schemas'
 
 import type { ConfirmationResult } from 'firebase/auth'
 import type { CodeFormData, PhoneFormData } from '../schemas'
+import PhoneInput from '../components/PhoneInput'
 
 export const Login: React.FC = () => {
   const [confirmationResult, setConfirmationResult] =
@@ -20,9 +21,10 @@ export const Login: React.FC = () => {
   const auth = useAuth()
 
   const {
-    register: registerPhoneInput,
+    //register: registerPhoneInput,
     handleSubmit: handleSubmitPhoneNumber,
     formState: { errors: phoneErrors, isSubmitted },
+    control,
   } = useForm<PhoneFormData>({
     resolver: zodResolver(phoneSchema),
     mode: 'onChange',
@@ -47,8 +49,10 @@ export const Login: React.FC = () => {
         setConfirmationResult(result)
         toast.success('Verification code sent!')
       })
-      .catch((error) => {
-        toast.error('Error sending verification code:', { description: error })
+      .catch((error: Error) => {
+        toast.error('Error sending verification code:', {
+          description: error.message,
+        })
       })
   }
 
@@ -60,7 +64,7 @@ export const Login: React.FC = () => {
           toast.success('Phone number verified!')
           navigate('/profile')
         })
-        .catch((error) => {
+        .catch((error: Error) => {
           toast.error('Error verifying code:', { description: error.message })
         })
     }
@@ -71,15 +75,26 @@ export const Login: React.FC = () => {
       <h2 className="text-naturalcycles-900 text-2xl font-bold">Login</h2>
       <div className="flex w-4/5 max-w-xs flex-col items-center justify-center gap-2 md:w-[300px]">
         <form className="w-full">
-          <Input<PhoneFormData>
+          {/* <Input<PhoneFormData>
             type="tel"
             register={registerPhoneInput}
             placeholder="Enter phone number"
             error={phoneErrors.phoneNumber}
             title="Phone Number"
             name="phoneNumber"
+          /> */}
+          <Controller
+            name="phoneNumber"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <PhoneInput
+                onChange={field.onChange}
+                value={field.value}
+                error={phoneErrors.phoneNumber}
+              />
+            )}
           />
-
           <Button
             type="submit"
             content="Send Code"
@@ -94,12 +109,12 @@ export const Login: React.FC = () => {
             error={codeErrors.code}
             title="Verification Code"
             name="code"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault()
-                handleSubmitCode(verifyCode)()
-              }
-            }}
+            // onKeyDown={(e) => {
+            //   if (e.key === 'Enter') {
+            //     e.preventDefault()
+            //     handleSubmitCode(verifyCode)()
+            //   }
+            // }}
           />
           <Button
             type="submit"
